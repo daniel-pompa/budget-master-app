@@ -58,6 +58,7 @@ In addition to these technologies, the application also employs React Context AP
 │   ├───📁 components/
 │   ├───📁 context/
 │   ├───📁 data/
+│   ├───📁 hooks/
 │   ├───📁 reducers/
 │   ├───📁 types/
 │   ├───📁 utils/
@@ -112,12 +113,22 @@ npm run dev
 
 ## Usage
 
-Once the development server is running, you can open your browser and navigate to <http://localhost:5173> to view the application.
+After starting the development server, navigate to <http://localhost:5173> in your browser to access the application.
 
-1. **Setting a Budget:** Use the form on the main page to set a new budget.
-2. **Tracking Expenses:** Add and manage your expenses through the expense tracking interface. You can filter expenses by category to better understand your spending habits.
-3. **Resetting the Budget:** If needed, you can reset your budget to start fresh or adjust your financial goals.
-4. **Real-Time Updates:** Monitor your financial status directly through the user interface. The application will provide live updates and visualizations, reflecting any changes to your budget and expenses in real-time, so you always have an up-to-date view of your financial data.
+1. **Setting a Budget:** Use the form on the main page to set your budget.
+
+2. **Adding Expenses:**
+   - Click the floating action button to open a modal with a form.
+   - Complete the form in the modal to add a new expense.
+
+3. **Managing Expenses:**
+   - **Edit an expense:** Swipe the expense item to the right to open the edit form in a modal. Modify the details and save your changes.
+   - **Delete an expense:** Swipe the expense item to the left to remove it.
+   - **Filter by category:** Use filters to view expenses for a selected category, providing a clearer view of your spending.
+
+4. **Resetting the Budget:** You can reset your budget at any time to adjust or start over.
+
+5. **Real-Time Updates:** The application provides real-time updates and visualizations of your budget and expenses, ensuring you always have the most current information.
 
 ## Demo
 
@@ -164,7 +175,8 @@ I would also like to extend my sincere gratitude to:
 - **[Tailwind CSS](https://tailwindcss.com/)** for providing a powerful utility-first CSS framework that greatly simplifies styling and ensures a responsive design.
 - **[Node.js](https://nodejs.org/en)** for offering a powerful and efficient runtime environment for JavaScript.
 - **[npm](https://www.npmjs.com/)** for being a crucial tool in managing project dependencies and packages.
-- **[Skillicons](https://skillicons.dev/)** for high-quality icons that enhance the visual appeal of this project.
+- **[Skillicons](https://skillicons.dev/)** for the icons used in the project's README to visually represent various technologies.
+- **[Freepik](https://www.freepik.com/)** for the icons used in this application, contributing to its overall visual design.
 - **Open Source Community** for the countless resources, tutorials, and tools available that have supported my learning journey.
 
 [Back to Top](#table-of-contents)
