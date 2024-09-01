@@ -1,4 +1,5 @@
-import { Form } from './components/Form';
+import { BudgetForm } from './components/BudgetForm';
+
 function App() {
   return (
     <>
@@ -8,7 +9,7 @@ function App() {
         </h1>
       </div>
       <div className='max-w-3xl mx-auto bg-white shadow-lg rounded mt-10 p-10'>
-        <Form />
+        <BudgetForm />
       </div>
     </>
   );
