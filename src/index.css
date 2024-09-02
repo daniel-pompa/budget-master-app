@@ -42,7 +42,19 @@ body {
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
 
+/* Custom styles for calendar */
 .react-calendar__tile--now,
 .react-calendar__tile--active {
   background: #e0f2fe;
+  color: #1e293b;
+}
+
+.react-calendar__tile--now:hover,
+.react-calendar__tile--active:hover {
+  background: #2563eb !important;
+  color: #fff;
+}
+
+.react-calendar__tile {
+  transition: background 0.3s ease, color 0.3s ease;
 }
