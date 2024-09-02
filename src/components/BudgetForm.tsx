@@ -29,7 +29,7 @@ export const BudgetForm = () => {
         <input
           type='number'
           id='budget'
-          className='w-full border border-slate-200 p-3 rounded focus:outline-none focus:border-blue-600'
+          className='w-full border border-slate-200 p-3 rounded focus:outline-none focus:border-slate-400'
           name='budget'
           placeholder='Introduzca el presupuesto'
           value={budget}
