@@ -5,6 +5,7 @@ import 'react-calendar/dist/Calendar.css';
 import { categories } from '../data/categories';
 import type { DraftExpense, Value } from '../types';
 import { ErrorMessage } from './ErrorMessage';
+import { useBudget } from '../hooks/useBudget';
 
 export const ExpenseForm = () => {
   const [expense, setExpense] = useState<DraftExpense>({
@@ -15,6 +16,8 @@ export const ExpenseForm = () => {
   });
 
   const [error, setError] = useState('');
+
+  const { dispatch } = useBudget();
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
@@ -35,7 +38,14 @@ export const ExpenseForm = () => {
       return;
     }
 
-    console.log(expense);
+    dispatch({ type: 'ADD_EXPENSE', payload: { expense } });
+
+    setExpense({
+      title: '',
+      amount: 0,
+      category: '',
+      date: new Date(),
+    });
   };
 
   return (
@@ -47,7 +57,7 @@ export const ExpenseForm = () => {
       {error && <ErrorMessage>{error}</ErrorMessage>}
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor='title' className='text-xl md:text-2xl text-slate-700 font-bold'>
+        <label htmlFor='title' className='md:text-2xl text-slate-700 font-bold'>
           Título
         </label>
         <input
@@ -62,7 +72,7 @@ export const ExpenseForm = () => {
       </div>
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor='amount' className='text-xl md:text-2xl text-slate-700 font-bold'>
+        <label htmlFor='amount' className='md:text-2xl text-slate-700 font-bold'>
           Importe
         </label>
         <input
@@ -77,10 +87,7 @@ export const ExpenseForm = () => {
       </div>
 
       <div className='flex flex-col gap-2'>
-        <label
-          htmlFor='category'
-          className='text-xl md:text-2xl text-slate-700 font-bold'
-        >
+        <label htmlFor='category' className='md:text-2xl text-slate-700 font-bold'>
           Categoría
         </label>
         <select
@@ -100,7 +107,7 @@ export const ExpenseForm = () => {
       </div>
 
       <div className='flex flex-col gap-2'>
-        <label htmlFor='amount' className='text-xl md:text-2xl text-slate-700 font-bold'>
+        <label htmlFor='date' className='md:text-2xl text-slate-700 font-bold'>
           Fecha
         </label>
         <DatePicker value={expense.date} onChange={handleDateChange} />
