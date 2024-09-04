@@ -8,7 +8,7 @@ export const ExpenseList = () => {
   const isEmpty = useMemo(() => state.expenses.length === 0, [state.expenses]);
 
   return (
-    <div>
+    <>
       {isEmpty ? (
         <p className='text-slate-600 text-xl md:text-2xl font-bold'>
           Aún no se han registrado gastos
@@ -23,6 +23,6 @@ export const ExpenseList = () => {
           ))}
         </>
       )}
-    </div>
+    </>
   );
 };
