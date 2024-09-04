@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import { PlusCircleIcon } from '@heroicons/react/24/solid';
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react';
 import { useBudget } from '../hooks/useBudget';
-import { ExpenseForm } from './ExpenseForm';
+import { ExpenseForm } from './';
 
 export const ExpenseModal = () => {
   const { state, dispatch } = useBudget();

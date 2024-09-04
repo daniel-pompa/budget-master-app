@@ -4,8 +4,8 @@ import 'react-date-picker/dist/DatePicker.css';
 import 'react-calendar/dist/Calendar.css';
 import { categories } from '../data/categories';
 import type { DraftExpense, Value } from '../types';
-import { ErrorMessage } from './ErrorMessage';
 import { useBudget } from '../hooks/useBudget';
+import { ErrorMessage } from './';
 
 export const ExpenseForm = () => {
   const [expense, setExpense] = useState<DraftExpense>({
