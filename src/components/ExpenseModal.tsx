@@ -11,7 +11,7 @@ export const ExpenseModal = () => {
     <>
       <div className='fixed right-5 bottom-5 flex items-center justify-center'>
         <button type='button' onClick={() => dispatch({ type: 'SHOW_MODAL' })}>
-          <PlusCircleIcon className='w-16 h-16 text-blue-600 rounded-full' />
+          <PlusCircleIcon className='w-12 h-12 md:w-16 md:h-16 text-blue-600 rounded-full' />
         </button>
       </div>
       <Transition appear show={state.modal} as={Fragment}>
