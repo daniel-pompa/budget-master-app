@@ -10,6 +10,7 @@ import {
 import 'react-swipeable-list/dist/styles.css';
 import { categories } from '../data/categories';
 import { formatDate } from '../utils';
+import { useBudget } from '../hooks/useBudget';
 import { ExpenseAmount } from './ExpenseAmount';
 
 type ExpenseItemProps = {
@@ -17,6 +18,8 @@ type ExpenseItemProps = {
 };
 
 export const ExpenseItem = ({ expense }: ExpenseItemProps) => {
+  const { dispatch } = useBudget();
+
   const categoryInfo = useMemo(
     () => categories.filter(c => c.id === expense.category)[0],
     [expense]
@@ -30,7 +33,10 @@ export const ExpenseItem = ({ expense }: ExpenseItemProps) => {
 
   const trailingActions = () => (
     <TrailingActions>
-      <SwipeAction destructive={true} onClick={() => {}}>
+      <SwipeAction
+        destructive={true}
+        onClick={() => dispatch({ type: 'DELETE_EXPENSE', payload: { id: expense.id } })}
+      >
         Eliminar
       </SwipeAction>
     </TrailingActions>
@@ -39,7 +45,7 @@ export const ExpenseItem = ({ expense }: ExpenseItemProps) => {
   return (
     <SwipeableList>
       <SwipeableListItem
-        maxSwipe={0.5}
+        maxSwipe={1}
         leadingActions={leadingActions()}
         trailingActions={trailingActions()}
         className='flex items-center max-h-40 mt-8 rounded'

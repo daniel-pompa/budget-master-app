@@ -5,7 +5,8 @@ export type BudgetActions =
   | { type: 'ADD_BUDGET'; payload: { budget: number } }
   | { type: 'SHOW_MODAL' }
   | { type: 'HIDE_MODAL' }
-  | { type: 'ADD_EXPENSE'; payload: { expense: DraftExpense } };
+  | { type: 'ADD_EXPENSE'; payload: { expense: DraftExpense } }
+  | { type: 'DELETE_EXPENSE'; payload: { id: Expense['id'] } };
 
 export type BudgetState = {
   budget: number;
@@ -14,7 +15,7 @@ export type BudgetState = {
 };
 
 export const initialState: BudgetState = {
-  budget: 3000,
+  budget: 0,
   modal: false,
   expenses: [],
 };
@@ -40,6 +41,12 @@ export const budgetReducer = (
     case 'ADD_EXPENSE': {
       const newExpense = createExpense(action.payload.expense);
       return { ...state, expenses: [...state.expenses, newExpense], modal: false };
+    }
+    case 'DELETE_EXPENSE': {
+      return {
+        ...state,
+        expenses: state.expenses.filter(expense => expense.id !== action.payload.id),
+      };
     }
     default:
       return state;
