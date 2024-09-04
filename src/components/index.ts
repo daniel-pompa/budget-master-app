@@ -2,5 +2,8 @@ export * from './BudgetAmountDisplay';
 export * from './BudgetForm';
 export * from './BudgetTracker';
 export * from './ErrorMessage';
+export * from './ExpenseAmount';
 export * from './ExpenseForm';
+export * from './ExpenseItem';
+export * from './ExpenseList';
 export * from './ExpenseModal';
