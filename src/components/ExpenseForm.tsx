@@ -110,7 +110,12 @@ export const ExpenseForm = () => {
         <label htmlFor='date' className='md:text-2xl text-slate-700 font-bold'>
           Fecha
         </label>
-        <DatePicker value={expense.date} onChange={handleDateChange} />
+        <DatePicker
+          value={expense.date}
+          onChange={handleDateChange}
+          minDate={new Date()}
+          className='w-screen md:w-full'
+        />
       </div>
 
       <input
