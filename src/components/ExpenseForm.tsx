@@ -17,7 +17,9 @@ export const ExpenseForm = () => {
 
   const [error, setError] = useState('');
 
-  const { state, dispatch } = useBudget();
+  const [prevAmount, setPrevAmount] = useState(0);
+
+  const { state, dispatch, remainingBudget } = useBudget();
 
   useEffect(() => {
     if (state.editingId) {
@@ -26,6 +28,7 @@ export const ExpenseForm = () => {
       );
       if (editingExpense) {
         setExpense(editingExpense);
+        setPrevAmount(editingExpense.amount);
       }
     }
   }, [state.editingId, state.expenses]);
@@ -49,6 +52,11 @@ export const ExpenseForm = () => {
       return;
     }
 
+    if (expense.amount - prevAmount > remainingBudget) {
+      setError('Fondos insuficientes');
+      return;
+    }
+
     // Add or edit expense
     if (state.editingId) {
       dispatch({
@@ -65,6 +73,8 @@ export const ExpenseForm = () => {
       category: '',
       date: new Date(),
     });
+
+    setPrevAmount(0);
   };
 
   return (
