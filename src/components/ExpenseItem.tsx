@@ -27,7 +27,13 @@ export const ExpenseItem = ({ expense }: ExpenseItemProps) => {
 
   const leadingActions = () => (
     <LeadingActions>
-      <SwipeAction onClick={() => {}}>Actualizar</SwipeAction>
+      <SwipeAction
+        onClick={() =>
+          dispatch({ type: 'GET_EXPENSE_BY_ID', payload: { id: expense.id } })
+        }
+      >
+        Actualizar
+      </SwipeAction>
     </LeadingActions>
   );
 
@@ -48,7 +54,7 @@ export const ExpenseItem = ({ expense }: ExpenseItemProps) => {
         maxSwipe={1}
         leadingActions={leadingActions()}
         trailingActions={trailingActions()}
-        className='flex items-center max-h-40 mt-8 rounded'
+        className='mt-8 rounded'
       >
         <div className='w-full bg-white py-10 px-5 flex gap-5 items-center cursor-pointer'>
           <div>
