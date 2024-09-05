@@ -49,7 +49,15 @@ export const ExpenseForm = () => {
       return;
     }
 
-    dispatch({ type: 'ADD_EXPENSE', payload: { expense } });
+    // Add or edit expense
+    if (state.editingId) {
+      dispatch({
+        type: 'UPDATE_EXPENSE',
+        payload: { expense: { id: state.editingId, ...expense } },
+      });
+    } else {
+      dispatch({ type: 'ADD_EXPENSE', payload: { expense } });
+    }
 
     setExpense({
       title: '',
@@ -62,7 +70,7 @@ export const ExpenseForm = () => {
   return (
     <form className='space-y-5' onSubmit={handleSubmit}>
       <legend className='text-xl md:text-3xl text-slate-700 font-bold text-center border-b-4 border-blue-600 py-2'>
-        Nuevo Gasto
+        {state.editingId ? 'Editar Gasto' : 'Nuevo Gasto'}
       </legend>
 
       {error && <ErrorMessage>{error}</ErrorMessage>}
@@ -132,7 +140,7 @@ export const ExpenseForm = () => {
       <input
         type='submit'
         className='w-full bg-blue-600 hover:bg-blue-700 text-white p-2 cursor-pointer rounded transition-colors duration-500'
-        value={'Añadir Gasto'}
+        value={state.editingId ? 'Guardar Cambios' : 'Registrar Gasto'}
       />
     </form>
   );
