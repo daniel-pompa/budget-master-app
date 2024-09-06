@@ -1,6 +1,12 @@
 import { useEffect, useMemo } from 'react';
 import { useBudget } from './hooks/useBudget';
-import { BudgetForm, BudgetTracker, ExpenseList, ExpenseModal } from './components';
+import {
+  BudgetForm,
+  BudgetTracker,
+  ExpenseList,
+  ExpenseModal,
+  FilterByCategory,
+} from './components';
 
 function App() {
   const { state } = useBudget();
@@ -24,6 +30,7 @@ function App() {
       </div>
       {isValidBudget && (
         <div className='max-w-3xl mx-auto py-10'>
+          <FilterByCategory />
           <ExpenseList />
           <ExpenseModal />
         </div>

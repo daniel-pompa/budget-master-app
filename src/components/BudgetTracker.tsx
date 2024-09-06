@@ -4,7 +4,7 @@ import { useBudget } from '../hooks/useBudget';
 import { BudgetAmountDisplay } from './';
 
 export const BudgetTracker = () => {
-  const { state, totalExpenseAmount, remainingBudget } = useBudget();
+  const { state, dispatch, totalExpenseAmount, remainingBudget } = useBudget();
 
   /** Calculates the percentage of the budget that has been spent */
   const usagePercent = ((totalExpenseAmount / state.budget) * 100).toFixed(2);
@@ -32,6 +32,7 @@ export const BudgetTracker = () => {
         <button
           type='button'
           className='w-full bg-blue-600 hover:bg-blue-700 text-white p-2 cursor-pointer rounded transition-colors duration-500'
+          onClick={() => dispatch({ type: 'RESET_BUDGET' })}
         >
           Restablecer Presupuesto
         </button>

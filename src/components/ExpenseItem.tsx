@@ -54,7 +54,7 @@ export const ExpenseItem = ({ expense }: ExpenseItemProps) => {
         maxSwipe={1}
         leadingActions={leadingActions()}
         trailingActions={trailingActions()}
-        className='mt-8 rounded'
+        className='rounded'
       >
         <div className='w-full bg-white py-10 px-5 flex gap-5 items-center cursor-pointer'>
           <div>

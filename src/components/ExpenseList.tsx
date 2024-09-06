@@ -5,23 +5,27 @@ import { ExpenseItem } from './';
 export const ExpenseList = () => {
   const { state } = useBudget();
 
-  const isEmpty = useMemo(() => state.expenses.length === 0, [state.expenses]);
+  const filteredExpenses = state.currentCategory
+    ? state.expenses.filter(expense => expense.category === state.currentCategory)
+    : state.expenses;
+
+  const isEmpty = useMemo(() => filteredExpenses.length === 0, [filteredExpenses]);
 
   return (
     <>
       {isEmpty ? (
-        <p className='text-slate-600 text-xl md:text-2xl font-bold'>
+        <p className='text-slate-600 text-xl md:text-2xl font-bold mt-10'>
           Aún no se han registrado gastos
         </p>
       ) : (
-        <>
-          <p className='text-slate-600 text-xl md:text-2xl font-bold'>
+        <div className='space-y-5'>
+          <p className='text-slate-600 text-xl md:text-2xl font-bold my-10'>
             Listado de Gastos
           </p>
-          {state.expenses.map(expense => (
+          {filteredExpenses.map(expense => (
             <ExpenseItem key={expense.id} expense={expense} />
           ))}
-        </>
+        </div>
       )}
     </>
   );
