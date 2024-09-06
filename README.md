@@ -132,12 +132,9 @@ After starting the development server, navigate to <http://localhost:5173> in yo
 
 ## Demo
 
-Explore the live demo of the application at the following link: [Budget Master](#) <!-- Replace with demo link -->
+Explore the live demo of the application at the following link: [Budget Master](https://budget-master-app.vercel.app/)
 
 Discover the features live and see the app in action!
-
-> [!NOTE]
-> The demo link is not available at the moment, please check back later. It will be available when the application is finished.
 
 ## Contributing
 
