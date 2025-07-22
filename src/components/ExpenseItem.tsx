@@ -21,7 +21,8 @@ export const ExpenseItem = ({ expense }: ExpenseItemProps) => {
   const { dispatch } = useBudget();
 
   const categoryInfo = useMemo(
-    () => categories.filter(c => c.id === expense.category)[0],
+    () =>
+      categories.find(c => c.id === expense.category) ?? { id: '', name: '', icon: '' },
     [expense]
   );
 
@@ -54,26 +55,30 @@ export const ExpenseItem = ({ expense }: ExpenseItemProps) => {
         maxSwipe={1}
         leadingActions={leadingActions()}
         trailingActions={trailingActions()}
-        className='rounded'
+        className='rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300'
       >
-        <div className='w-full bg-white py-10 px-5 flex gap-5 items-center cursor-pointer'>
-          <div>
+        <div className='w-full bg-white py-8 flex flex-col md:flex-row md:items-center gap-6 cursor-pointer rounded-lg'>
+          <div className='flex justify-center md:justify-start flex-shrink-0'>
             <img
               src={`${categoryInfo.icon}.svg`}
               alt={`${categoryInfo.name} icon`}
-              className='w-24'
+              className='w-20 h-20 object-contain'
+              loading='lazy'
+              draggable={false}
             />
           </div>
-          <div className='flex-1 space-y-2'>
-            <p className='text-slate-500 text-md uppercase font-bold'>
+          <div className='flex-1 space-y-1 text-center md:text-left'>
+            <p className='text-slate-600 text-md uppercase font-semibold tracking-wide'>
               {categoryInfo.name}
             </p>
-            <p>{expense.title}</p>
-            <p className='text-slate-500 text-sm'>
+            <p className='text-gray-800 text-lg font-medium truncate'>{expense.title}</p>
+            <p className='text-slate-600 text-xs'>
               {formatDate(expense.date!.toString())}
             </p>
           </div>
-          <ExpenseAmount amount={expense.amount} />
+          <div className='mt-4 md:mt-0 flex justify-center md:justify-end flex-shrink-0'>
+            <ExpenseAmount amount={expense.amount} />
+          </div>
         </div>
       </SwipeableListItem>
     </SwipeableList>

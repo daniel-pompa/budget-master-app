@@ -3,7 +3,6 @@ import { useBudget } from '../hooks/useBudget';
 
 export const BudgetForm = () => {
   const [budget, setBudget] = useState(0);
-
   const { dispatch } = useBudget();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,30 +17,33 @@ export const BudgetForm = () => {
   };
 
   return (
-    <form className='space-y-5' onSubmit={handleSubmit}>
-      <div className='flex flex-col space-y-5'>
-        <label
-          htmlFor='budget'
-          className='text-xl md:text-3xl text-blue-600 font-bold text-center'
-        >
-          Establecer Presupuesto
-        </label>
+    <form
+      onSubmit={handleSubmit}
+      className='w-full max-w-lg mx-auto bg-white p-4 md:p-8 rounded-xl shadow-lg ring-1 ring-slate-200 space-y-6'
+    >
+      <div className='space-y-4'>
+        <h2 className='text-center text-2xl md:text-3xl text-slate-600 font-semibold'>
+          Definir presupuesto
+        </h2>
         <input
           type='number'
           id='budget'
-          className='w-full border border-slate-200 p-3 rounded focus:outline-none focus:border-slate-400'
           name='budget'
-          placeholder='Introduzca el presupuesto'
+          placeholder='Ingresa tu presupuesto'
+          min={0}
           value={budget}
           onChange={handleChange}
+          className='w-full px-4 py-3 border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-slate-700 placeholder-slate-400 transition-all'
         />
       </div>
-      <input
+
+      <button
         type='submit'
-        value='Confirmar Presupuesto'
-        className='w-full bg-blue-600 hover:bg-blue-700 text-white p-3 cursor-pointer rounded transition-colors duration-500 disabled:opacity-40'
         disabled={isValid}
-      />
+        className='w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-md transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed'
+      >
+        Confirmar
+      </button>
     </form>
   );
 };

@@ -20,21 +20,32 @@ function App() {
 
   return (
     <>
-      <div className='bg-blue-600 py-8 max-h-72'>
-        <h1 className='text-2xl md:text-4xl text-center text-white font-black uppercase'>
+      {/* Header */}
+      <header className='bg-blue-900 py-12'>
+        <h1 className='text-center text-white text-3xl md:text-4xl font-bold tracking-wide uppercase'>
           Control de Gastos
         </h1>
-      </div>
-      <div className='max-w-3xl mx-auto bg-white shadow-lg rounded mt-10 p-10'>
-        {isValidBudget ? <BudgetTracker /> : <BudgetForm />}
-      </div>
-      {isValidBudget && (
-        <div className='max-w-3xl mx-auto py-10'>
-          <FilterByCategory />
-          <ExpenseList />
-          <ExpenseModal />
-        </div>
-      )}
+      </header>
+
+      {/* Main Container */}
+      <main className='w-full max-w-2xl mx-auto px-1 sm:px-6 -mt-2 pb-10 relative z-10'>
+        <section>{isValidBudget ? <BudgetTracker /> : <BudgetForm />}</section>
+
+        {isValidBudget && (
+          <div className='mt-6 space-y-6'>
+            <section>
+              <FilterByCategory />
+            </section>
+            <section>
+              <ExpenseList />
+            </section>
+            <ExpenseModal />
+          </div>
+        )}
+      </main>
+
+      {/* Background Accent */}
+      <div className='absolute inset-0 top-0 h-44 bg-blue-900 -z-10' />
     </>
   );
 }
